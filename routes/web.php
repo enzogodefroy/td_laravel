@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/product/{id}', [MainController::class, 'product']);
 
 Route::get('/command/{id}', [MainController::class, 'command']);
+
+Route::get('/validateCommandDetail', [MainController::class, 'validateCommandDetail']);

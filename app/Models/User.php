@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $password
  * 
- * @property Collection|Basket[] $baskets
  * @property Collection|Command[] $commands
  *
  * @package App\Models
@@ -36,11 +35,6 @@ class User extends Model
 		'email',
 		'password'
 	];
-
-	public function baskets()
-	{
-		return $this->hasMany(Basket::class, 'idUser');
-	}
 
 	public function commands()
 	{

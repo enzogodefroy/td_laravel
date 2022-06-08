@@ -22,8 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idSection
  * 
  * @property Section $section
- * @property Collection|Associatedproduct[] $associatedproducts
- * @property Collection|Basketdetail[] $basketdetails
  * @property Collection|Commanddetail[] $commanddetails
  * @property Collection|Pack[] $packs
  *
@@ -51,24 +49,9 @@ class Product extends Model
 		'idSection'
 	];
 
-	public function getName()
-	{
-		return $this->name;
-	}
-
 	public function section()
 	{
 		return $this->belongsTo(Section::class, 'idSection');
-	}
-
-	public function associatedproducts()
-	{
-		return $this->hasMany(Associatedproduct::class, 'idProduct');
-	}
-
-	public function basketdetails()
-	{
-		return $this->hasMany(Basketdetail::class, 'idProduct');
 	}
 
 	public function commanddetails()

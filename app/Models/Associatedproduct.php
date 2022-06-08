@@ -13,8 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $idProduct
  * @property int $idAssoProduct
- * 
- * @property Product $product
  *
  * @package App\Models
  */
@@ -29,8 +27,8 @@ class Associatedproduct extends Model
 		'idAssoProduct' => 'int'
 	];
 
-	public function product()
-	{
-		return $this->belongsTo(Product::class, 'idProduct');
-	}
+	protected $fillable = [
+		'idProduct',
+		'idAssoProduct'
+	];
 }

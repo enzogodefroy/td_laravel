@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Command;
+use App\Models\Commanddetail;
+use Doctrine\ORM\EntityManagerInterface;
+use Illuminate\Support\Facades\DB;
  
 class MainController extends Controller
 {
@@ -32,5 +35,14 @@ class MainController extends Controller
         return view('command', [
             'command' => Command::findOrFail($id)
         ]);
+    }
+
+    public function validateCommandDetail()
+    {
+        $product = $_GET['product'];
+        $command = $_GET['command'];
+
+        Commanddetail::where([['idCommand', $command], ['idProduct', $product]])->update(['prepared' => 1]);
+        return redirect()->back();
     }
 }

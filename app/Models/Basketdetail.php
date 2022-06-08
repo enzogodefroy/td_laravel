@@ -14,9 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idBasket
  * @property int $idProduct
  * @property int $quantity
- * 
- * @property Basket $basket
- * @property Product $product
  *
  * @package App\Models
  */
@@ -33,16 +30,8 @@ class Basketdetail extends Model
 	];
 
 	protected $fillable = [
+		'idBasket',
+		'idProduct',
 		'quantity'
 	];
-
-	public function basket()
-	{
-		return $this->belongsTo(Basket::class, 'idBasket');
-	}
-
-	public function product()
-	{
-		return $this->belongsTo(Product::class, 'idProduct');
-	}
 }
