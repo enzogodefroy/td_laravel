@@ -1,6 +1,6 @@
 <?php
 
-$cmdd = $command->commanddetails;
+$commanddetails = $command->commanddetails;
 
 ?>
 
@@ -43,33 +43,25 @@ $cmdd = $command->commanddetails;
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-
-                    foreach ($cmdd as $detail)
-                    {
-                        $form = '';
-
-                        if (!$detail->prepared)
-                        {
-                            $form = '<form method="GET" action="/validateCommandDetail">
+                    @foreach ($commanddetails as $detail)
+                        <tr>
+                            <td data-label="Name"> {{ $detail->product->name}} </td>
+                            <td data-label="Quantity"> {{ $detail->quantity }} </td>
+                            <td data-label="Section"> {{ $detail->product->section->name }} </td>
+                            <td>
+                                @if (!$detail->prepared)   
+                                    <form method="GET" action="/validateCommandDetail">
                                         <div class="ui checkbox">
                                             <input type="checkbox" name="example" onChange="this.form.submit()" />
-                                            <input type="hidden" name="product" value="' . $detail->product->id . '" />
-                                            <input type="hidden" name="command" value="' . $detail->command->id . '" />
+                                            <input type="hidden" name="product" value=" {{ $detail->product->id }} " />
+                                            <input type="hidden" name="command" value=" {{ $detail->command->id }} " />
                                             <label>Set prepared</label>
                                         </div>
-                                    </form>';
-                        }
-
-                        echo    '<tr>
-                                    <td data-label="Name">' .  $detail->product->name . '</td>
-                                    <td data-label="Quantity">' .  $detail->quantity . '</td>
-                                    <td data-label="Section">' .  $detail->product->section->name . '</td>
-                                    <td>' . $form . '</td>
-                                </tr>';
-                    }
-
-                    ?>
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 </table>
         </div>
