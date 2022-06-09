@@ -36,7 +36,9 @@ class Commanddetail extends Model
 
 	protected $fillable = [
 		'quantity',
-		'prepared'
+		'prepared',
+		'idProduct',
+		'idCommand'
 	];
 
 	public function command()

@@ -39,7 +39,9 @@ class Command extends Model
 		'idEmployee' => 'int',
 		'amount' => 'float',
 		'toPay' => 'float',
-		'idTimeslot' => 'int'
+		'itemsNumber' =>'int',
+		'missingeNumber '=> 'int',
+		'idTimeslot' => 'int',
 	];
 
 	protected $dates = [
@@ -53,6 +55,8 @@ class Command extends Model
 		'status',
 		'amount',
 		'toPay',
+		'itemsNumber',
+		'missingNumber',
 		'idTimeslot'
 	];
 

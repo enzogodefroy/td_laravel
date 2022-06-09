@@ -40,4 +40,14 @@ class Basket extends Model
 		'dateCreation',
 		'idUser'
 	];
+
+	public function basketdetails()
+	{
+		return $this->hasMany(Basketdetail::class, 'idBasket');
+	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'idUser');
+	}
 }

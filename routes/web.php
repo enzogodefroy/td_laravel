@@ -23,3 +23,11 @@ Route::get('/product/{id}', [MainController::class, 'product']);
 Route::get('/command/{id}', [MainController::class, 'command']);
 
 Route::get('/validateCommandDetail', [MainController::class, 'validateCommandDetail']);
+
+Route::get('/baskets/{userId}', [MainController::class, 'getUserBaskets'], 'baskets')->name('baskets');
+
+Route::get('/basketDetails/{basketId}', [MainController::class, 'getBasketDetails']);
+
+Route::get('/chooseTimeslot/{basketId}', [MainController::class, 'chooseTimeslot']);
+
+Route::get('/basketValid', [MainController::class, 'basketValid']);
